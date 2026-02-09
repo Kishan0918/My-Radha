@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Question</title>
+<style>
+       body {
+           margin: 0;
+           padding: 0;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           background: #0f172a; /* Dark romantic background */
+           font-family: 'Arial', sans-serif;
+           overflow: hidden;
+       }
+       .container {
+           text-align: center;
+           max-width: 500px;
+           padding: 20px;
+       }
+       .main-image {
+           width: 100%;
+           border-radius: 20px;
+           box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+           margin-bottom: 30px;
+           animation: fadeIn 2s ease-in;
+       }
+       .button-group {
+           display: flex;
+           justify-content: center;
+           gap: 20px;
+           position: relative;
+           height: 120px;
+       }
+       .btn-img {
+           width: 100px;
+           height: 100px;
+           cursor: pointer;
+           transition: transform 0.2s;
+           object-fit: contain;
+       }
+       .btn-img:hover {
+           transform: scale(1.1);
+       }
+       #no-button {
+           position: absolute;
+           transition: all 0.3s ease;
+           left: 60%;
+       }
+       #yes-button {
+           position: absolute;
+           right: 60%;
+       }
+       @keyframes fadeIn {
+           from { opacity: 0; transform: translateY(-20px); }
+           to { opacity: 1; transform: translateY(0); }
+       }
+       /* Success Message Overlay */
+       #success-msg {
+           display: none;
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: rgba(0, 0, 0, 0.9);
+           color: white;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           z-index: 100;
+       }
+</style>
+</head>
+<body>
+<div class="container">
+<img src="proposal.png" alt="Will you be my Radha?" class="main-image">
+<div class="button-group">
+<img src="yes.png" id="yes-button" class="btn-img" onclick="sayYes()" alt="Yes">
+<img src="no.png" id="no-button" class="btn-img" onmouseover="moveNo()" onclick="moveNo()" alt="No">
+</div>
+</div>
+<div id="success-msg">
+<h1 style="color: #ff69b4; font-size: 3rem;">❤️ Yay! ❤️</h1>
+<p style="font-size: 1.5rem;">I can't wait to celebrate with you!</p>
+</div>
+<script>
+       // Function to make the No button run away
+       function moveNo() {
+           const btn = document.getElementById('no-button');
+           const x = Math.random() * (window.innerWidth - btn.clientWidth);
+           const y = Math.random() * (window.innerHeight - btn.clientHeight);
+           btn.style.left = x + 'px';
+           btn.style.top = y + 'px';
+           btn.style.position = 'fixed';
+       }
+       // Function for clicking Yes
+       function sayYes() {
+           document.getElementById('success-msg').style.display = 'flex';
+       }
+</script>
+</body>
+</html>
